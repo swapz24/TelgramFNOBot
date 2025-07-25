@@ -12,6 +12,7 @@ from flask import Flask, request
 import json
 import os
 
+
 # --- Telegram Setup ---
 BOT_TOKEN = "7993502945:AAHdgPtK643W4YW4GkX1tvDi6NLD92jPCKc"
 CHAT_ID = "274946332"
@@ -63,13 +64,15 @@ def webhook():
                 "/check – Run a live signal check"
                 "/summary – Get today's evening summary"
                 "/list – View current watchlist"
-                "/add SYMBOL – Add stock/index (e.g. /add RIL)"
+                "/add SYMBOL – Add stock/index (e.g. /add RELIANCE)"
                 "/remove SYMBOL – Remove stock/index (e.g. /remove TCS)"
-                "/start or /help – Show this help message")
+                "/start or /help – Show this help message"
+            )
             send_telegram_alert(help_message)
         elif "/list" in msg_text:
             stock_list = ', '.join(equities.keys())
-            send_telegram_alert(f"📋 *Current Watchlist:*{stock_list}")
+            send_telegram_alert(f"📋 *Current Watchlist:*
+{stock_list}")
         elif "/add" in msg_text and len(command_parts) == 2:
             symbol = command_parts[1].upper()
             equities[symbol] = f"{symbol}.NS"
@@ -85,10 +88,5 @@ def webhook():
                 send_telegram_alert(f"⚠️ Symbol {symbol} not found in watchlist.")
     return {"status": "ok"}, 200
 
-
 if __name__ == "__main__":
-    scheduler = BackgroundScheduler(timezone=pytz.timezone("Asia/Kolkata"))
-    scheduler.add_job(send_evening_summary, trigger='cron', hour=15, minute=15)
-    scheduler.start()
-
     app.run(host="0.0.0.0", port=5000)
