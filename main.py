@@ -66,8 +66,7 @@ def webhook():
             send_telegram_alert(help_message)
         elif "/list" in msg_text:
             stock_list = ', '.join(equities.keys())
-            send_telegram_alert(f"📋 *Current Watchlist:*
-{stock_list}")
+            send_telegram_alert(f"📋 *Current Watchlist:*{stock_list}")
         elif "/add" in msg_text and len(command_parts) == 2:
             symbol = command_parts[1].upper()
             equities[symbol] = f"{symbol}.NS"
