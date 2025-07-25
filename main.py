@@ -57,18 +57,12 @@ def webhook():
             help_message = (
                 "👋 *Welcome to the Market Alert Bot!*"
                 
-                "Available commands:
-"
-                "/check – Run a live signal check
-"
-                "/summary – Get today's evening summary
-"
-                "/list – View current watchlist
-"
-                "/add SYMBOL – Add stock/index (e.g. /add RELIANCE)
-"
-                "/remove SYMBOL – Remove stock/index (e.g. /remove TCS)
-"
+                "Available commands:"
+                "/check – Run a live signal check"
+                "/summary – Get today's evening summary"
+                "/list – View current watchlist"
+                "/add SYMBOL – Add stock/index (e.g. /add RELIANCE)"
+                "/remove SYMBOL – Remove stock/index (e.g. /remove TCS)"
                 "/start or /help – Show this help message"
             )
             send_telegram_alert(help_message)
