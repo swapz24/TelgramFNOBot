@@ -82,9 +82,10 @@ def webhook():
                 send_telegram_alert(f"⚠️ Symbol {symbol} not found in watchlist.")
     return {"status": "ok"}, 200
 
+
 if __name__ == "__main__":
-scheduler = BackgroundScheduler(timezone=pytz.timezone("Asia/Kolkata"))
-scheduler.add_job(send_evening_summary, trigger='cron', hour=15, minute=15)
-scheduler.start()
+    scheduler = BackgroundScheduler(timezone=pytz.timezone("Asia/Kolkata"))
+    scheduler.add_job(send_evening_summary, trigger='cron', hour=15, minute=15)
+    scheduler.start()
 
     app.run(host="0.0.0.0", port=5000)
