@@ -55,9 +55,8 @@ def webhook():
             send_telegram_alert("📊 Evening summary triggered.")
         elif "/start" in msg_text or "/help" in msg_text:
             help_message = (
-                "👋 *Welcome to the Market Alert Bot!*
-
-"
+                "👋 *Welcome to the Market Alert Bot!*"
+                
                 "Available commands:
 "
                 "/check – Run a live signal check
