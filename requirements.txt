@@ -1,0 +1,6 @@
+flask
+requests
+yfinance
+pandas
+beautifulsoup4
+schedule
